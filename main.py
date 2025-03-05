@@ -46,8 +46,8 @@ def get_db():
         db.close()
 
 # 관리자 비밀번호 설정 (실제 사용 시 환경변수 활용)
-admin_password = os.getenv("ADMIN_PASSWORD")
-ADMIN_PASSWORD = {admin_password}
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
 
 # 방문록 메시지 추가 (POST /entries)
 @app.post("/entries")
