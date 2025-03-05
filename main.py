@@ -67,11 +67,11 @@ def read_entries(db: Session = Depends(get_db)):
 @app.delete("/entries/{entry_id}")
 def delete_entry(entry_id: int, password: str, db: Session = Depends(get_db)):
     if password != ADMIN_PASSWORD:
-        raise HTTPException(status_code=403, detail="권한이 없습니다.")
+        raise HTTPException(403, "권한이 없습니다.")
 
     entry = db.query(GuestbookEntry).filter(GuestbookEntry.id == entry_id).first()
     if not entry:
-        raise HTTPException(status_code=404, detail="메시지를 찾을 수 없습니다.")
+        raise HTTPException(404, "메시지를 찾을 수 없습니다.")
 
     db.delete(entry)
     db.commit()
