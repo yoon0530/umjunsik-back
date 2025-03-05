@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 load_dotenv()
 app = FastAPI()
 
+PORT = int(os.getenv("PORT", 8000))
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
